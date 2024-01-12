@@ -1,0 +1,20 @@
+name: Generate Directory Structure
+on:
+push:
+branches:
+- master
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v2
+- name: Generate Directory Structure
+uses: peter-evans/create-pull-request@v3.7.0
+with:
+commit-message: 'generate directory structure'
+branch: add-directory-structure
+title: 'generate directory structure'
+body: 'Automatically generated directory structure'
+path: 'ollama-webui'
+delete-branch: true
+token: $\$\{\{$ secrets.GITHUB_TOKEN \}\}
